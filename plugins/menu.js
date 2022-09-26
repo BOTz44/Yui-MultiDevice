@@ -416,14 +416,7 @@ const listMessage = {
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
     
     //----------------- FAKE
- let fvn = {quoted: { key: {participant : '0@s.whatsapp.net'},message: { "audioMessage": {"mimetype":"audio/ogg; codecs=opus","seconds": "2022","ptt": "true"} } }}
- let floc = {quoted: { key: { participant : '0@s.whatsapp.net'}, message: { "liveLocationMessage": { "caption": `Menu`,"h": `${name}`, 'jpegThumbnail': fs.readFileSync('./thumbnail.jpg')}} }}
- let fdocs = {quoted: { key : { participant : '0@s.whatsapp.net'},message: {documentMessage: {title: `Hai Kak ${name}!`,  jpegThumbnail: fs.readFileSync('./thumbnail.jpg') }}}}
- let fgclink = {quoted: {key: {participant : '0@s.whatsapp.net'},message: {groupInviteMessage: {groupJid: "17608914335-1625305606@g.us",inviteCode: null,groupName: `Hai ${name}!`,  caption: wm,  jpegThumbnail: fs.readFileSync('./thumbnail.jpg') }} }}
- let fgif = {quoted: {key: { participant : '0@s.whatsapp.net'}, message: {  "videoMessage": {  "title": `Hai Kak ${name}!`, "h": `Hmm`, 'seconds': '999999999',  'gifPlayback': 'true',  'caption': wm, 'jpegThumbnail': fs.readFileSync('./thumbnail.jpg') } } } }
- let fkon = { key: { fromMe: false, participant: `${m.sender.split`@`[0]}@s.whatsapp.net`, ...(m.chat ? { remoteJid: '16504228206@s.whatsapp.net' } : {}) }, message: { contactMessage: { displayName: `${name}`, vcard: `BEGIN:VCARD\nVERSION:3.0\nN:;a,;;;\nFN:${name}\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`}}}
- 
-    let ftoko = {
+ let ftoko = {
     key: {
     fromMe: false,
     participant: `${m.sender.split`@`[0]}` + '@s.whatsapp.net',
@@ -447,83 +440,24 @@ const listMessage = {
   }
   }
   }
-  
-    let urls = pickRandom(['https://telegra.ph/file/035e524939ab0294ba91f.jpg', 'https://telegra.ph/file/96b2275d3b14d071290bc.jpg', 'https://telegra.ph/file/2c6b7660bc6126404a9bb.jpg', 'https://telegra.ph/file/c635bf577bb9d59a3e00b.jpg', 'https://telegra.ph/file/be8dd52f6363f9e9f5a60.jpg', 'https://telegra.ph/file/02e53361b9dc946f63c8d.jpg', 'https://telegra.ph/file/298ed2f1bba17aeb64ca8.jpg', 'https://telegra.ph/file/be2a18221974147f66ea0.jpg'])
-  
-    const pp = await conn.profilePictureUrl(conn.user.jid).catch(_ => 'https://telegra.ph/file/24fa902ead26340f3df2c.png')
-    
-    //FAKE TROLI
-
-    const ftrol = {
-
-    key : {
-
+  let fgif = {
+    key: {
     remoteJid: 'status@broadcast',
-
-    participant : '0@s.whatsapp.net'
-
-    },
-
-    message: {
-
-    orderMessage: {
-
-    itemCount : 2022,
-
-    status: 1,
-
-    surface : 1,
-
-    message: `Hai Kak ${name}!`, 
-
-    orderTitle: `▮Menu ▸`,
-
-    thumbnail: await (await fetch(fla + 'Menu')).buffer(), //Gambarnye
-
-    sellerJid: '0@s.whatsapp.net' 
-
-    }
-
-    }
-
-    }
-    
-    const fload = {
-
-    key : {
-
-    remoteJid: 'status@broadcast',
-
-    participant : '0@s.whatsapp.net'
-
-    },
-
-    message: {
-
-    orderMessage: {
-
-    itemCount : 2022,
-
-    status: 1,
-
-    surface : 1,
-
-    message: '[❗] Memuat Menu ' + teks + '...\n Sabar Ya Kak ^ω^', 
-
-    orderTitle: `▮Menu ▸`,
-
-    thumbnail: await (await fetch(fla + 'Loading')).buffer(), //Gambarnye
-
-    sellerJid: '0@s.whatsapp.net' 
-
-    }
-
-    }
-
-    }
-
-    conn.reply(m.chat, '*Tunggu Sebentar Kak. . .*', ftrol) 
-
+    participant : '0@s.whatsapp.net'},
+    message: { 
+                  "videoMessage": { 
+                  "title": wm,
+                  "h": `Nekohime`,
+                  'duration': '99999999', 
+                  'gifPlayback': 'true', 
+                  'caption': bottime,
+                  'jpegThumbnail': thumb
+                         }
+                        }
+                     }
+  let fkon = { key: { fromMe: false, participant: `${m.sender.split`@`[0]}@s.whatsapp.net`, ...(m.chat ? { remoteJid: '16504228206@s.whatsapp.net' } : {}) }, message: { contactMessage: { displayName: `${name}`, vcard: `BEGIN:VCARD\nVERSION:3.0\nN:;a,;;;\nFN:${name}\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`}}}
+  
+    const pp = await conn.profilePictureUrl(conn.user.jid).catch(_ => './src/avatar_contact.png')
     
     //------------------< MENU >----------------
     
